@@ -39,7 +39,7 @@
 
     /* line height  */
     --lh-normal: 1.5;
-    --lh-small: 1;
+    --lh-small: 1.2;
 
     /* font family  */
     --ff-regular: 'Inter-regular', sans-serif;
@@ -48,6 +48,7 @@
     /* width  */
     --simule-width: 385px;
     --required-width: 485px;
+    --card-width: 222px;
 
     /* spacing  */
     --side-main: 100px; 
@@ -199,6 +200,7 @@ header {
     margin-bottom: 10px;
     margin-left: 10px;
     color: var(--black);
+    font-size: var(--fs-text-medium);
 }
 
 input {
@@ -209,6 +211,7 @@ input {
     border: 1px solid var(--black);
     font-family: var(--ff-semibold);
     line-height: var(--lh-normal);
+    font-size: var(--fs-text-medium);
 }
 
 .tag {
@@ -272,7 +275,9 @@ section .container {
     width: 100%;
     height: 100%;
 }
-
+#simule{
+    min-height: 700px;
+}
 #simule .container {
     padding-top: var(--section-bottom);
     display: flex;
@@ -329,6 +334,7 @@ section .container {
     flex-direction: column;
     align-items: center;
     transition: var(--transition);
+    min-height: 500px;
 }
 
 #simule .simular-table.share-open {
@@ -349,7 +355,9 @@ section .container {
     text-align: left;
     font-family: var(--ff-semibold);
     border-bottom: 1px solid #00000011;
+    font-size: var(--fs-text-medium);
     padding: 15px;
+    white-space: nowrap;
 }
 
 #simule .simular-table table th.has-tag {
@@ -360,6 +368,8 @@ section .container {
     padding: 25px 15px;
     color: var(--black);
     font-family: var(--ff-regular);
+    font-size: var(--fs-text-small);
+    white-space: nowrap;
 }
 
 #simule .simular-table table td.value {
@@ -589,6 +599,7 @@ section .container {
 
 #sobre .emprestimo .emprestimo-text .descricao p {
     margin-bottom: 25px;
+    font-size: var(--fs-text-medium);
 }
 
 #sobre .emprestimo .emprestimo-text ol {
@@ -702,4 +713,247 @@ section .container {
 
 #sobre .como-saber .explicação-block .lista-img img {
     width: 100%;
+}
+
+#ideias {
+    background-color: var(--primary-color);
+}
+
+
+#ideias .ideias-text {
+    padding: 0 var(--side-main);
+    margin-bottom: 60px;
+}
+
+#ideias h2 {
+    color: var(--neutral-color);
+    font-size: var(--fs-title-medium);
+}
+
+#ideias span {
+    color: var(--neutral-color);
+    font-size: var(--fs-text-small);
+}
+
+#ideias .container {
+    padding: var(--section-top) 0 var(--section-bottom); 
+}
+
+/* Slides  */
+.swiper-slide .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--neutral-light);
+    box-shadow: 0px 5px 10px 0px var(--shadow);
+    border-radius: var(--bd-medium);
+}
+
+.swiper-slide .card .card-img {
+    width: 100%;
+    height: 125px;
+    overflow: hidden;
+}
+.swiper-slide .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide .card .card-text {
+    padding: 30px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.swiper-slide .card .card-text h4 {
+    font-size: var(--fs-text-big);
+    font-family: var(--ff-semibold);
+    margin-bottom: 20px;
+}
+
+.swiper-slide .card .card-text p {
+    font-family: var(--ff-semibold);
+    font-size: var(--fs-text-medium);
+    margin-bottom: 20px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    font-size: 0 !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.swiper-button-prev::after {
+    background-image: url('../images/icons/arrow-left.png');
+}
+
+.swiper-button-next::after {
+    background-image: url('../images/icons/arrow-right.png');
+}
+
+/* media query  */
+@media screen and (max-width: 1500px) {
+    :root {
+        /* font size  */
+        --fs-title-big: 28px;
+        --fs-title-medium: 24px;
+        --fs-title-small: 20px;
+        
+        --fs-text-big: 16px;
+        --fs-text-medium: 14px;
+        --fs-text-small: 12px;
+
+        --fs-main-btn: 16px;
+
+        /* spacing  */
+        --side-main: 80px; 
+        --section-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    :root {
+
+        /* spacing  */
+        --side-main: 60px;
+    }
+
+    #simule .simular-table .border {
+        overflow-x:auto;
+    }
+
+    #inicio .start-text {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    :root {
+        --fs-title-big: 24px;
+        --fs-title-medium: 20px;
+        --fs-title-small: 16px;
+        --fs-text-big: 14px;
+        --fs-text-medium: 12px;
+        --fs-text-small: 10px;
+
+        --simule-width: 100%;
+        --required-width: 100%;
+
+        /* spacing  */
+        --side-main: 40px;
+        --section-bottom: 40px;
+        --side-header: 20px;
+
+        --input-padding: 10px;
+    }
+
+    #inicio .container {
+        flex-direction: column;
+        padding: var(--section-top) var(--side-main) 0;
+    }
+
+    #inicio .banner {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #inicio .start-text {
+        margin-bottom: 0;
+    }
+    #inicio .start-text h1 {
+        margin-bottom: 10px;
+        line-height: var(--lh-small);
+    }
+
+    #simule .simular h4 {
+        margin-bottom: 5px;
+    }
+
+    #simule .simular h3 {
+        margin-bottom: 5px;
+    }
+
+    #simule .simular p {
+        margin-bottom: 15px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        margin-bottom: 5px;
+        margin-left: 5px;
+    }
+
+    .btn {
+        padding: 15px;
+    }
+
+    #simule .simular .link {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    #simule .container {
+        flex-direction: column;
+    }
+
+    #simule .simular {
+        position: relative;
+        left: 0;
+    }
+
+    #simule .simular-table {
+        width: 100%;
+        min-height: 0;
+    }
+
+    #sobre .emprestimo {
+        flex-direction: column;
+    }
+
+    #sobre .emprestimo .emprestimo-text {
+        width: 100%;
+    }
+
+    #sobre .emprestimo .emprestimo-text .descricao {
+        margin-top: 20px;
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --fs-title-big: 22px;
+        --fs-title-medium: 16px;
+        --fs-title-small: 14px;
+        --fs-text-big: 12px;
+        --fs-text-medium: 12px;
+        --fs-text-small: 10px;
+
+        --fs-main-btn: 14px;
+
+        --side-main: 30px; 
+        
+        --section-bottom: 30px;
+        --section-top: 30px;
+        
+    }
+
+    #ideias .ideias-text {
+        margin-bottom: 20px;
+    }
 }

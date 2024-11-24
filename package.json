@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev": "ws --https"
+  },
+  "dependencies": {
+    "local-web-server": "^5.4.0"
+  }
+}

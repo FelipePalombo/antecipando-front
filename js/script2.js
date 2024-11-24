@@ -24,7 +24,8 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
 
                 const imgCell = document.createElement('td');
                 const img = document.createElement('img');
-                img.src = `images/bank-icons/${banco.nome.toLowerCase().replace(/\s+/g, '')}.png`;
+                img.src = `./images/bank-icons/${banco.nome.toLowerCase().replace(/\s+/g, '')}.png`;
+                
                 img.alt = banco.nome;
                 imgCell.appendChild(img);
                 row.appendChild(imgCell);
@@ -34,7 +35,10 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
                 row.appendChild(nomeCell);
 
                 const valorCell = document.createElement('td');
-                valorCell.textContent = `R$ ${banco.valorLiberado.toFixed(2)}`;
+                valorCell.textContent = `R$ ${banco.valorLiberado.toLocaleString('pt-BR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })}`;    
                 row.appendChild(valorCell);
 
                 const disponibilidadeCell = document.createElement('td');
