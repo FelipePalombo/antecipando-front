@@ -275,9 +275,7 @@ section .container {
     width: 100%;
     height: 100%;
 }
-#simule{
-    min-height: 700px;
-}
+
 #simule .container {
     padding-top: var(--section-bottom);
     display: flex;
@@ -397,8 +395,7 @@ section .container {
     -webkit-font-smoothing: antialiased;
     margin-left: 5px;
 }
-#simule .tooltip:hover::before {
-    content: attr(hover-tooltip);
+.tooltip-box {
     background-image: url('../images/icons/warning.png');
     background-size: 25px;
     background-repeat: no-repeat;
@@ -407,11 +404,10 @@ section .container {
     text-align: left;
     position: absolute;
     display: block;
-    left: 50%;
     min-width: 250px;
-    max-width: 400px;
-    bottom: calc(100% + 15px);
-    transform: translate(-50%);
+    max-width: 300px;
+    height: auto;
+    transform: translate(50%);
     animation: fadeIn 300ms ease;
     background-color: var(--neutral-light);
     border-radius: var(--bd-medium);
@@ -424,14 +420,14 @@ section .container {
     box-shadow: 0px 2px 5px 0px var(--shadow);
 }
 
-#simule .tooltip:hover::after {
+.tooltip-box::before {
     content: '';
     position: absolute;
     display: block;
     left: 50%;
     width: 15px;
     height: 15px;
-    bottom: calc(100% - -7px);
+    bottom: -9px;
     transform: rotate(45deg);
     margin-left: -9px;
     border-radius: 0 0 4px 0;
@@ -636,6 +632,10 @@ section .container {
     padding-left: 40px;
 }
 
+#sobre .emprestimo .emprestimo-card .required div:last-child p {
+    margin-bottom: 0;
+}
+
 #sobre .vantagens {
     color: var(--color-dark);
 }
@@ -672,10 +672,12 @@ section .container {
     font-family: var(--ff-semibold);
     font-size: var(--fs-text-big);
     margin-bottom: 10px;
+    text-align: center;
 }
 
 #sobre .vantagens .vantagens-list .vantagem p {
     text-align: center;
+    font-size: var(--fs-text-medium);
 }
 
 #sobre .como-saber {
@@ -699,12 +701,14 @@ section .container {
 
 #sobre .como-saber .explicação-block .lista ol {
     padding-left: 20px;
+    margin-top: 0;
 }
 
 #sobre .como-saber .explicação-block .lista ol li {
     list-style: decimal;
     font-family: var(--ff-regular);
     margin-bottom: 10px;
+    font-size: var(--fs-text-medium);
 }
 
 #sobre .como-saber .explicação-block .lista-img {
@@ -837,6 +841,10 @@ section .container {
     #inicio .start-text {
         margin-bottom: 20px;
     }
+
+    #simule .share-block {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -919,6 +927,11 @@ section .container {
     #simule .simular-table {
         width: 100%;
         min-height: 0;
+        padding: 15px;
+    }
+
+    #simule .simular-table.share-open {
+        padding-bottom: 15px;
     }
 
     #sobre .emprestimo {
@@ -932,6 +945,73 @@ section .container {
     #sobre .emprestimo .emprestimo-text .descricao {
         margin-top: 20px;
         padding-left: 0;
+    }
+
+    #sobre .emprestimo .emprestimo-text .descricao p {
+        margin-bottom: 10px;
+    }
+
+    #sobre .emprestimo .emprestimo-card {
+        margin-left: 0;
+        margin-top: 20px;
+        padding: 30px;
+    }
+
+    #sobre .emprestimo .emprestimo-card h3 {
+        margin-bottom: 20px;
+    }
+
+    #sobre .emprestimo .emprestimo-card .required p {
+        margin-bottom: 10px;
+    }
+
+    #ideias .ideias-text {
+        margin-bottom: 20px;
+    }
+
+    #sobre .vantagens .vantagens-list {
+        margin-top: 20px;
+    }
+
+    #sobre .vantagens .vantagens-list .vantagem {
+        padding: 20px;
+    }
+    
+    #sobre .como-saber .explicação-block {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #sobre .como-saber .explicação-block .lista {
+        width: 100%;
+    }
+
+    #sobre .como-saber .explicação-block .lista-img {
+        width: 100%;
+    }
+
+    #simule .share-block h3 {
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) { 
+    #sobre .vantagens .vantagens-list {
+        flex-direction: column;
+    }
+    #simule .simular-table .share-btn::before {
+        width: 20px;
+        height: 20px;
+    }
+    #simule .simular-table.share-open .share-block {
+        flex-direction: column-reverse;
+    }
+    #simule .share-block .share-text {
+        margin-right: 0;
+        margin-top: 20px;
+    }
+    #simule .share-block {
+        width: 100%;
     }
 }
 
@@ -953,7 +1033,10 @@ section .container {
         
     }
 
-    #ideias .ideias-text {
-        margin-bottom: 20px;
+    #sobre .vantagens .vantagens-list .vantagem {
+        padding: 10px;
+    }
+    #sobre .vantagens .vantagens-list .vantagem .vantagem-img {
+        width: 30px;
     }
 }

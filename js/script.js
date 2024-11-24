@@ -1,4 +1,5 @@
 import format from './formatCurrency.js';
+import tooltip from './tooltip.js';
 
 // swiper
 const swiper = new Swiper('.swiper', {
@@ -22,19 +23,19 @@ const swiper = new Swiper('.swiper', {
       spaceBetween: 40,
     },
     768: {
-      slidesPerView: 3,
+      slidesPerView: 3.2,
       spaceBetween: 40,
     },
     1090: {
-      slidesPerView: 4,
+      slidesPerView: 3.4,
       spaceBetween: 80,
     },
     1370: {
-      slidesPerView: 5,
+      slidesPerView: 5.5,
       spaceBetween: 80,
     },
     1660: {
-      slidesPerView: 6,
+      slidesPerView: 5.5,
       spaceBetween: 80,
     },
   },

@@ -51,6 +51,7 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
 
                 const urlCell = document.createElement('td');
                 const urlLink = document.createElement('a');
+                urlLink.classList.add('link');
                 urlLink.href = banco.urlBanco;
                 urlLink.textContent = 'Ir Para Site do Banco >';
                 urlCell.appendChild(urlLink);
