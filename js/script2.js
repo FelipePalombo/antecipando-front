@@ -24,7 +24,7 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
 
                 const imgCell = document.createElement('td');
                 const img = document.createElement('img');
-                img.src = `./images/bank-icons/${banco.nome.toLowerCase().replace(/\s+/g, '')}.png`;
+                img.src = `./images/banco-icons/${banco.nome.toLowerCase().replace(/\s+/g, '')}.png`;
                 img.className = "bank-img";
                 
                 img.alt = banco.nome;
