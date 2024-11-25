@@ -1,9 +1,6 @@
 document.getElementById('simulacao-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const simularBtn = document.querySelector('.simule-btn');
-    simularBtn.classList.add('loading');
-
     // Obtém o valor do saldo FGTS e remove caracteres não numéricos
     const saldoFGTSInput = document.getElementById('saldo').value;
     const saldoFGTS = parseFloat(saldoFGTSInput.replace(/[^\d,]/g, '').replace(',', '.'));
@@ -13,9 +10,32 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
     // Verifica se o saldoFGTS é um número válido
     if (isNaN(saldoFGTS)) {
         alert('Por favor, insira um valor válido para o saldo FGTS.');
-        simularBtn.classList.remove('loading');
         return;
     }
+
+    executarSimulacao(saldoFGTS, dataNascimento);
+});
+
+// Adiciona eventos de clique aos botões da seção de ideias
+document.querySelectorAll('.card-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const saldo = this.previousElementSibling.textContent.replace('R$', '').replace('.', '').trim();
+        document.getElementById('saldo').value = parseFloat(saldo).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        // Rola para a seção de simulação
+        document.getElementById('simule').scrollIntoView({ behavior: 'smooth' });
+
+        // Se o campo de data de nascimento já estiver preenchido, executa a simulação automaticamente
+        const dataNascimento = document.getElementById('data').value;
+        if (dataNascimento) {
+            executarSimulacao(parseFloat(saldo), dataNascimento);
+        }
+    });
+});
+
+function executarSimulacao(saldoFGTS, dataNascimento) {
+    const simularBtn = document.querySelector('.simule-btn');
+    simularBtn.classList.add('loading');
 
     fetch(`https://antecipando-api.azurewebsites.net/Simulacoes?SaldoFGTS=${saldoFGTS}&DataNascimento=${dataNascimento}`)
         .then(response => response.json())
@@ -84,7 +104,7 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
         .finally(() => {
             simularBtn.classList.remove('loading');
         });
-});
+}
 
 function atualizarCodigoGerado(data){
     // Atualiza o código gerado e o link na seção de compartilhamento
