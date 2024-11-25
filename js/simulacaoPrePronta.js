@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`https://antecipando-api.azurewebsites.net/Simulacoes/${idSolicitacao}`)
             .then(response => response.json())
             .then(data => {
-                preencherCampos(data.solicitacao.usuario);
+                preencherCampos(data.solicitacao.usuario, data.solicitacao.dataSolicitacao);
                 preencherTabela(data.bancos, data.melhorOferta);
                 atualizarCodigoGerado(data);
             })
@@ -45,9 +45,22 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
         });
 });
 
-function preencherCampos(usuario) {
+function preencherCampos(usuario, dataSolicitacao) {
     document.getElementById('saldo').value = usuario.saldoFGTS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     document.getElementById('data').value = usuario.dataNascimento.split('T')[0];
+
+    if (dataSolicitacao) {
+        const dataHoraSimulacao = document.getElementById('dataHoraSimulacao');
+        const dataFormatada = new Date(dataSolicitacao).toLocaleString('pt-BR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        dataHoraSimulacao.textContent = `Data Simulação ${dataFormatada}`;
+    }
 }
 
 function preencherTabela(bancos, melhorOferta) {
