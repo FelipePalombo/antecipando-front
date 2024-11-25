@@ -93,7 +93,7 @@ function atualizarCodigoGerado(data){
     const qrCodeContainer = document.querySelector('.qr-code');
 
     const idSolicitacao = data.idSolicitacao;
-    const link = `https://antecipando-front.vercel.app/${idSolicitacao}`;
+    const link = `https://antecipando-front.vercel.app/?idSolicitacao=${idSolicitacao}`;
 
     shareText.textContent = `CÓDIGO ${idSolicitacao} GERADO`;
     shareLink.href = link;
