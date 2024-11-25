@@ -190,6 +190,32 @@ header {
     font-size: var(--fs-text-small);
 }
 
+.btn.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
 .input-group {
     display: flex;
     flex-direction: column;
@@ -465,10 +491,14 @@ section .container {
 }
 
 #simule .simular-table .btn-block {
-    display: flex;
-    justify-content: flex-end;
+    display: none;
     width: 100%;
     margin-top: 10px;
+}
+
+#simule .simular-table .btn-block.visible {
+    display: flex;
+    justify-content: flex-end;
 }
 
 #simule .simular-table .share-btn {
@@ -551,19 +581,44 @@ section .container {
     color: var(--primary-dark);
 }
 
-#simule .share-block .link::after {
+/* Não funcionou :(
+#simule .share-block .copy-btn:hover::after {
+    background-image: url('../images/icons/copy-hover.svg');
+} 
+
+#simule .share-block .copy-btn {
     content: "";
     margin-left: 10px;
+    padding: 5px 10px;    
+    transition: var(--transition);
+    background-color: var(--primary-color);
+}
+
+.copy-btn::before {
+    content: "Copiar";
+    background-image: url('../images/icons/copy.svg');
     width: 20px;
     height: 20px;
-    background-image: url('../images/icons/copy.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
-#simule .share-block .link:hover::after {
-    background-image: url('../images/icons/copy-hover.svg');
+
+#simule .share-block .copy-btn:after {
+    content: 'Copiar';
+} */
+
+#simule .share-block .copy-btn.copied:after {
+    content: '✔';
+    background-image: none;
+}
+
+.melhor-oferta {
+    color: #FFD072;
+    font-weight: bold;
 }
 
 #sobre .container {
