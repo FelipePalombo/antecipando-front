@@ -1,5 +1,6 @@
 import format from './formatCurrency.js';
 import tooltip from './tooltip.js';
+import { ValidateNumber, ValidateDate } from './validate.js';
 
 // swiper
 const swiper = new Swiper('.swiper', {
