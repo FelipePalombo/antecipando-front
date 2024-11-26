@@ -77,3 +77,19 @@ function scrollToPosition(to) {
     behavior: "smooth",
   });
 }
+
+//Botão de copiar link 
+const copyButton = document.querySelector('.copy-btn');
+if(copyButton) {
+  copyButton.addEventListener('click', () => {
+    const link = document.querySelector('.share-text a.link').href;
+    navigator.clipboard.writeText(link).then(() => {
+      copyButton.classList.add('copied');
+      setTimeout(() => {
+        copyButton.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      console.error('Erro ao copiar o link: ', err);
+    });
+  });
+}

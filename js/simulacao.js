@@ -35,7 +35,9 @@ document.querySelectorAll('.card-btn').forEach(button => {
 
 function executarSimulacao(saldoFGTS, dataNascimento) {
     const simularBtn = document.querySelector('.simule-btn');
+    const simularTable = document.querySelector('.simular-table');
     simularBtn.classList.add('loading');
+    simularTable.classList.add('loading');
 
     fetch(`https://antecipando-api.azurewebsites.net/Simulacoes?SaldoFGTS=${saldoFGTS}&DataNascimento=${dataNascimento}`)
         .then(response => response.json())
@@ -103,6 +105,7 @@ function executarSimulacao(saldoFGTS, dataNascimento) {
         .catch(error => console.error('Erro:', error))
         .finally(() => {
             simularBtn.classList.remove('loading');
+            simularTable.classList.remove('loading');
         });
 }
 
@@ -131,25 +134,4 @@ function atualizarCodigoGerado(data){
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
-
-    /* Não funciona :()
-    // Adiciona o evento de clique ao botão de copiar
-    const copyButton = document.querySelector('.copy-btn');
-    copyButton.addEventListener('click', copiarLink);
-    */
 }
-
-/*
-function copiarLink() {
-    const link = document.querySelector('.share-text a.link').href;
-    navigator.clipboard.writeText(link).then(() => {
-        const copyButton = document.querySelector('.copy-btn');
-        copyButton.classList.add('copied');
-        setTimeout(() => {
-            copyButton.classList.remove('copied');
-        }, 2000);
-    }).catch(err => {
-        console.error('Erro ao copiar o link: ', err);
-    });
-}
-*/
