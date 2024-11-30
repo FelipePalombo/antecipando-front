@@ -51,13 +51,10 @@ function preencherCampos(usuario, dataSolicitacao) {
 
     if (dataSolicitacao) {
         const dataHoraSimulacao = document.getElementById('dataHoraSimulacao');
-        const dataFormatada = new Date(dataSolicitacao).toLocaleString('pt-BR', {
+        const dataFormatada = new Date(dataSolicitacao).toLocaleDateString('pt-BR', {
             day: '2-digit',
             month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
+            year: 'numeric'
         });
         dataHoraSimulacao.textContent = `Data Simulação ${dataFormatada}`;
     }
