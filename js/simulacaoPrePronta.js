@@ -22,7 +22,7 @@ document.getElementById('inicio-link').addEventListener('click', function(event)
     
     setTimeout(() => {
         location.reload();
-    }, 1000);
+    }, 900);
 
     // // Limpa a tabela de simulações
     // const tableBody = document.getElementById('simular-table').querySelector('tbody');
