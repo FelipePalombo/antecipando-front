@@ -62,7 +62,7 @@ export class ValidateNumber {
 
     isValidNumber(value) {
         const number = parseInt(value, 10);
-        return number >= 500 && number <= 15000000;
+        return number >= 50000 && number <= 15000000;
     }
 }
 
