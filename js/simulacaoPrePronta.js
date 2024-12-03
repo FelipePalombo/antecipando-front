@@ -1,9 +1,17 @@
-document.addEventListener('DOMContentLoaded', function() {
+let apiBaseUrl = '';
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await fetch('config.json')
+    .then(response => response.json())
+    .then(config => {apiBaseUrl = config.apiBaseUrl;})
+
+    console.log(apiBaseUrl);
+
     const urlParams = new URLSearchParams(window.location.search);
     const idSolicitacao = urlParams.get('idSolicitacao');
 
     if (idSolicitacao) {
-        fetch(`https://antecipando-api.azurewebsites.net/Simulacoes/${idSolicitacao}`)
+        await fetch(`${apiBaseUrl}/Simulacoes/${idSolicitacao}`)
             .then(response => response.json())
             .then(data => {
                 preencherCampos(data.solicitacao.usuario, data.solicitacao.dataSolicitacao);
@@ -44,7 +52,7 @@ document.getElementById('simulacao-form').addEventListener('submit', function(ev
         return;
     }
 
-    fetch(`https://antecipando-api.azurewebsites.net/Simulacoes?SaldoFGTS=${saldoFGTS}&DataNascimento=${dataNascimento}`)
+    fetch(`${apiBaseUrl}/Simulacoes?SaldoFGTS=${saldoFGTS}&DataNascimento=${dataNascimento}`)
         .then(response => response.json())
         .then(data => {
             preencherTabela(data.bancos, data.melhorOferta);
@@ -137,7 +145,7 @@ function atualizarCodigoGerado(data){
     const qrCodeContainer = document.querySelector('.qr-code');
 
     const idSolicitacao = data.idSolicitacao || data.solicitacao.idSolicitacao;
-    const link = `https://antecipando-front.vercel.app/?idSolicitacao=${idSolicitacao}`;
+    const link = `${apiBaseUrl}/?idSolicitacao=${idSolicitacao}`;
 
     shareText.textContent = `CÓDIGO ${idSolicitacao} GERADO`;
     shareLink.href = link;

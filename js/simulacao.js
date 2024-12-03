@@ -1,3 +1,9 @@
+let apiBaseUrl = '';
+
+fetch('config.json')
+    .then(response => response.json())
+    .then(config => {apiBaseUrl = config.apiBaseUrl;})
+
 document.getElementById('simulacao-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -39,7 +45,7 @@ function executarSimulacao(saldoFGTS, dataNascimento) {
     simularBtn.classList.add('loading');
     simularTable.classList.add('loading');
 
-    fetch(`https://antecipando-api.azurewebsites.net/Simulacoes?SaldoFGTS=${saldoFGTS}&DataNascimento=${dataNascimento}`)
+    fetch(`${apiBaseUrl}/Simulacoes?SaldoFGTS=${saldoFGTS}&DataNascimento=${dataNascimento}`)
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('simular-table').querySelector('tbody');
