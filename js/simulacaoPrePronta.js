@@ -23,14 +23,6 @@ document.getElementById('inicio-link').addEventListener('click', function(event)
     setTimeout(() => {
         location.reload();
     }, 900);
-
-    // // Limpa a tabela de simulações
-    // const tableBody = document.getElementById('simular-table').querySelector('tbody');
-    // tableBody.innerHTML = '';
-
-    // // Oculta o botão "Compartilhar Simulação"
-    // const shareButton = document.querySelector('.btn-block');
-    // shareButton.classList.remove('visible');
 });
 
 document.getElementById('simulacao-form').addEventListener('submit', function(event) {
