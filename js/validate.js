@@ -23,13 +23,14 @@ export class ValidateDate {
         const date = new Date(dateString);
         const today = new Date();
         const hundredYearsAgo = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
+        const year2007 = new Date('2007-12-31');
 
         if (isNaN(date.getTime())) {
             return false; // Data inexistente
         }
 
-        if (date < hundredYearsAgo || date > today) {
-            return false; // Data de mais de 100 anos atrás ou no futuro
+        if (date < hundredYearsAgo || date > year2007) {
+            return false; // Data de mais de 100 anos atrás ou maior que 2007
         }
 
         return true;
