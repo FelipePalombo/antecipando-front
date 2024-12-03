@@ -19,7 +19,8 @@ document.getElementById('inicio-link').addEventListener('click', function(event)
     
     // Limpa a URL
     window.history.pushState({}, document.title, window.location.pathname);
-
+    location.reload();
+    
     // // Limpa a tabela de simulações
     // const tableBody = document.getElementById('simular-table').querySelector('tbody');
     // tableBody.innerHTML = '';
